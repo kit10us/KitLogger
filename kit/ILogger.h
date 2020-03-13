@@ -9,6 +9,9 @@
 
 namespace kit
 {
+	// Forward declarations...
+	class ILogListener;
+
 	/// <summary>
 	/// Performs logging tasks.
 	/// </summary>
@@ -18,6 +21,16 @@ namespace kit
 		typedef std::shared_ptr< ILogger > ptr;
 
 		virtual ~ILogger() {}
+
+		/// <summary> 
+		/// Attach a log listener.
+		/// </summary>
+		virtual void AttachListener( ILogListener* logListener ) = 0;
+
+		/// <summary> 
+		/// Attach a log listener.
+		/// </summary>
+		virtual void DetachListener( ILogListener* logListener ) = 0;
 
 		/// <summary>
 		/// Log a line of text.

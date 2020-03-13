@@ -9,10 +9,22 @@
 
 class CustomLogger : public kit::ILogger
 {
-    std::list<kit::Block*> m_blocks;
     std::list<kit::ILogListener*> m_listeners;
+    std::list<kit::Block*> m_blocks;
 
 public:
+    void AttachListener( kit::ILogListener* logListener ) override
+    {
+        m_listeners.push_back( logListener );
+        logListener->LogEvent( "LOG LISTENER ATTACHED" );
+    }
+
+    void DetachListener( kit::ILogListener* logListener ) override
+    {
+        logListener->LogEvent( "LOG LISTENER DETACHED" );
+        m_listeners.remove( logListener );
+    }
+
     void Log( std::string text ) override
     {
         for (auto listener : m_listeners )
@@ -53,9 +65,34 @@ public:
 
 class MyLogListener : public kit::ILogListener
 {
+    kit::ILogger* m_logger;
 public:
-    MyLogListener()
+    MyLogListener( kit::ILogger* logger )
     {
+        Attach( logger );
+    }
+
+    ~MyLogListener()
+    {
+        Detach();
+    }
+
+    void Attach( kit::ILogger* logger ) override
+    {
+        if( m_logger == nullptr )
+        {
+            logger->AttachListener( this );
+            m_logger = logger;
+        }
+    }
+
+    void Detach() override
+    {
+        if( m_logger )
+        {
+            m_logger->DetachListener( this );
+            m_logger = {};
+        }
     }
 
     void LogEvent( std::string text ) override
@@ -70,13 +107,20 @@ int main()
     using namespace std;
     using namespace kit;
 
+    // Create the logger first, before any other logger constructs.
     CustomLogger logger;
     {
-        Block outer( &logger, "Outer Block." );
-        outer.Log( "Root" );
+        // Create the log listener; construct will automatically attach listener, in this case.
+        MyLogListener myLogListener( &logger );
+
+        // Attempt 
         {
-            Block inner( &logger, "Inner Block." );
-            inner.Log( "Sub" );
+            Block outer( &logger, "Outer block." );
+            outer.Log( "Log from the outer block." );
+            {
+                Block inner( &logger, "Inner block." );
+                inner.Log( "Log from the inner block." );
+            }
         }
     }
     
