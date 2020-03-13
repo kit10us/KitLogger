@@ -1,0 +1,22 @@
+// Copyright (c) 2003 - 2011, Kit10 Studios LLC
+// All Rights Reserved
+
+#pragma once
+
+#include <kit/ILogListener.h>
+#include <string>
+
+namespace kit
+{
+	/// <summary>
+	/// Hosts log listeners.
+	/// </summary>
+	class ILoggerHost
+	{
+	public:
+		virtual void LogLine( std::string line ) = 0;
+		virtual void AttachLogListener( ILogListener* listener ) = 0;
+		virtual void DetachLogListener( ILogListener* litener ) = 0;
+		virtual void DetachAllLogListeners() = 0;
+	};
+}

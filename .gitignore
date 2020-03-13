@@ -1,0 +1,8 @@
+# Ignore paths
+/.vs
+/output
+/intermediate
+/lib
+
+# User files
+*.vcxproj.user

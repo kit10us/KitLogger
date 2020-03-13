@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="kit">
+      <UniqueIdentifier>{96f93821-d2a1-4898-b6e9-a05540430ddc}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="kit\ILogListener.h">
+      <Filter>kit</Filter>
+    </ClInclude>
+    <ClInclude Include="kit\Block.h">
+      <Filter>kit</Filter>
+    </ClInclude>
+    <ClInclude Include="kit\ILogger.h">
+      <Filter>kit</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="kit\Block.cpp">
+      <Filter>kit</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
