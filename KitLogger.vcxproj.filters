@@ -9,16 +9,14 @@
     <ClInclude Include="kit\ILogListener.h">
       <Filter>kit</Filter>
     </ClInclude>
-    <ClInclude Include="kit\Block.h">
-      <Filter>kit</Filter>
-    </ClInclude>
     <ClInclude Include="kit\ILogger.h">
       <Filter>kit</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="kit\Block.cpp">
+    <ClInclude Include="kit\IBlock.h">
       <Filter>kit</Filter>
-    </ClCompile>
+    </ClInclude>
+    <ClInclude Include="kit\LogEvent.h">
+      <Filter>kit</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -3,15 +3,16 @@
 
 #pragma once
 
-#include <kit/Block.h>
+#include <kit/IBlock.h>
+#include <kit/LogEvent.h>
+#include <kit/ILogListener.h>
+#include <functional>
 #include <iostream>
+#include <string>
 #include <memory>
 
 namespace kit
 {
-	// Forward declarations...
-	class ILogListener;
-
 	/// <summary>
 	/// Performs logging tasks.
 	/// </summary>
@@ -25,12 +26,12 @@ namespace kit
 		/// <summary> 
 		/// Attach a log listener.
 		/// </summary>
-		virtual void AttachListener( ILogListener* logListener ) = 0;
+		virtual void AttachListener( ILogListener::ptr logListener ) = 0;
 
 		/// <summary> 
 		/// Attach a log listener.
 		/// </summary>
-		virtual void DetachListener( ILogListener* logListener ) = 0;
+		virtual void DetachListener( ILogListener::ptr logListener ) = 0;
 
 		/// <summary>
 		/// Log a line of text.
@@ -38,13 +39,39 @@ namespace kit
 		virtual void Log( std::string text ) = 0;
 
 		/// <summary>
-		/// Push a block onto the logger.
+		/// Create/allocate a block.
 		/// </summary>
-		virtual void PushBlock( kit::Block* block ) = 0;
+		virtual IBlock::ptr MakeBlock( std::string name ) = 0;
 
 		/// <summary>
-		/// Pop a block off of the logger.
+		/// Push a block onto the logger. It does not manage (new) the block
 		/// </summary>
-		virtual void PopBlock( kit::Block* block ) = 0;
+		virtual void PushBlock( IBlock* block ) = 0;
+
+		/// <summary>
+		/// Pop a block off of the logger. It does not manage (delete) the block.
+		/// </summary>
+		virtual void PopBlock( IBlock* block ) = 0;
+
+		/// <summary>
+		/// Log a line of text from a block.
+		/// </summary>
+		virtual void BlockLog( std::string text ) = 0;
+
+		/// <summary>
+		/// Get the block stack as text.
+		/// </summary>
+		virtual std::string GetBlockText() const = 0;
+
+		/// <summary>
+		/// Execute a function from within a block.
+		/// </summary>
+		void Block( std::string name, std::function< void(IBlock*)> functionBlock )
+		{
+			auto block = this->MakeBlock( name );
+
+			// Pass as a pointer as to not increment use count.
+			functionBlock( block.get() );
+		}
 	};
 }

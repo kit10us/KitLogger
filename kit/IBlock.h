@@ -3,6 +3,7 @@
 
 #pragma once
 
+#include <memory>
 #include <string>
 
 namespace kit
@@ -13,24 +14,25 @@ namespace kit
 	/// <summary>
 	/// Used to create a debug block that auto pops, when we pop the strack frame.
 	/// </summary>
-	class Block
+	class IBlock
 	{
 		ILogger * m_logger;
 		std::string m_name;
 
 	public:
-		Block( ILogger * debug, std::string name );
-		~Block();
+		typedef std::shared_ptr< IBlock > ptr;
+
+		virtual ~IBlock() {};
 
 		/// <summary>
 		/// Gets the name of this block.
 		/// </summary>
-		std::string GetName() const;
+		virtual std::string GetName() const = 0;
 
 		/// <summary>
 		/// Log a line in this block.
 		/// Ultimately just a pass-through to the debugger logger.
 		/// </summary>
-		void Log( std::string line );
+		virtual void Log( std::string line ) = 0;
 	};
 }

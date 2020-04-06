@@ -3,4 +3,7 @@
   <ItemGroup>
     <ClCompile Include="KitLogger-Test01-General.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BlockPopper.h" />
+  </ItemGroup>
 </Project>

@@ -3,7 +3,9 @@
 
 #pragma once
 
+#include <kit/LogEvent.h>
 #include <string>
+#include <memory>
 
 namespace kit
 {
@@ -16,21 +18,13 @@ namespace kit
 	class ILogListener
 	{
 	public:
+		typedef std::shared_ptr< ILogListener > ptr;
+
 		virtual ~ILogListener() {}
-
-		/// <summary>
-		/// Attach listener to logger.
-		/// </summary>
-		virtual void Attach( ILogger* logger ) = 0;
-
-		/// <summary>
-		/// Detach listener from logger.
-		/// </summary>
-		virtual void Detach() = 0;
 
 		/// <summary>
 		/// Event trigger when a log event happens.
 		/// </summary>
-		virtual void LogEvent( std::string text ) = 0;
+		virtual void LogEvent( const LogEvent* event ) = 0;
 	};
 }
