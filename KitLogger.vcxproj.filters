@@ -4,19 +4,22 @@
     <Filter Include="kit">
       <UniqueIdentifier>{96f93821-d2a1-4898-b6e9-a05540430ddc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="kit\debug">
+      <UniqueIdentifier>{3e853880-2a1b-473f-80ed-21f127899727}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="kit\ILogListener.h">
-      <Filter>kit</Filter>
+    <ClInclude Include="kit\debug\IBlock.h">
+      <Filter>kit\debug</Filter>
     </ClInclude>
-    <ClInclude Include="kit\ILogger.h">
-      <Filter>kit</Filter>
+    <ClInclude Include="kit\debug\ILogger.h">
+      <Filter>kit\debug</Filter>
     </ClInclude>
-    <ClInclude Include="kit\IBlock.h">
-      <Filter>kit</Filter>
+    <ClInclude Include="kit\debug\ILogListener.h">
+      <Filter>kit\debug</Filter>
     </ClInclude>
-    <ClInclude Include="kit\LogEvent.h">
-      <Filter>kit</Filter>
+    <ClInclude Include="kit\debug\LogEvent.h">
+      <Filter>kit\debug</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -2,8 +2,30 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="KitLogger-Test01-General.cpp" />
+    <ClCompile Include="..\common\CustomBlock.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common\CustomLogger.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common\CustomLogListener.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BlockPopper.h" />
+    <Filter Include="common">
+      <UniqueIdentifier>{5f4071cc-0647-4a6f-8944-d81be51c35fb}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\common\CustomBlock.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\common\CustomLogger.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\common\CustomLogListener.h">
+      <Filter>common</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

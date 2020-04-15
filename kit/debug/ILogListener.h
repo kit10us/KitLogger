@@ -3,15 +3,11 @@
 
 #pragma once
 
-#include <kit/LogEvent.h>
-#include <string>
+#include <kit/debug/LogEvent.h>
 #include <memory>
 
-namespace kit
+namespace kit::debug
 {
-	// Forward declarations...
-	class ILogger;
-
 	/// <summary>
 	/// Listens to log events.
 	/// </summary>

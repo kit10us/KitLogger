@@ -5,8 +5,11 @@
 
 #include <string>
 
-namespace kit
+namespace kit::debug
 {
+	/// <summary>
+	/// Log event's argument structure.
+	/// </summary>
 	struct LogEvent
 	{
 		std::string text;
