@@ -4,6 +4,7 @@
 #pragma once
 
 #include <kit/debug/LogEvent.h>
+#include <unify/Path.h>
 #include <memory>
 
 namespace kit::debug
@@ -22,5 +23,12 @@ namespace kit::debug
 		/// Event trigger when a log event happens.
 		/// </summary>
 		virtual void LogEvent( const LogEvent* event ) = 0;
+
+		/// <summary>
+		/// Returns the path to the log listener.
+		/// This is how the listener is accessible outside of the app.
+		/// This is empty if there is no way to access the log outside.
+		/// </summary>
+		virtual unify::Path GetPath() const = 0;
 	};
 }
