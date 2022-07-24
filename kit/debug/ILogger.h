@@ -31,9 +31,14 @@ namespace kit::debug
 		virtual void DetachListener( ILogListener::ptr logListener ) = 0;
 
 		/// <summary>
+		/// Returns a list of loggers.
+		/// </summary>
+		virtual std::list<kit::debug::ILogListener::ptr> GetListeners() = 0;
+
+		/// <summary>
 		/// Log a line of text.
 		/// </summary>
-		virtual void Log( std::string text ) = 0;
+		virtual void Log(std::string text, std::string catagory = {}, std::string location = {}) = 0;
 
 		/// <summary>
 		/// Creates a debug block. It's main purpose is to

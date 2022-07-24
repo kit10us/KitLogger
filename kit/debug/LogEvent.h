@@ -4,6 +4,7 @@
 #pragma once
 
 #include <string>
+#include <chrono>
 
 namespace kit::debug
 {
@@ -12,6 +13,24 @@ namespace kit::debug
 	/// </summary>
 	struct LogEvent
 	{
+		/// <summary>
+		/// Text.
+		/// </summary>
 		std::string text;
+
+		/// <summary>
+		/// Time of event.
+		/// </summary>
+		std::chrono::system_clock::time_point time;
+
+		/// <summary>
+		/// User defined catagory.
+		/// </summary>
+		std::string catagory;
+
+		/// <summary>
+		/// User defined location.
+		/// </summary>
+		std::string location;
 	};
 }

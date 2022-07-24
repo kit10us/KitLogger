@@ -36,9 +36,9 @@ namespace kit::debug
 
 		/// <summary>
 		/// Log a line in this block.
-		/// Ultimately just a pass-through to the debugger logger.
 		/// </summary>
-		virtual void Log( std::string line ) = 0;
+		virtual void Log(std::string text, std::string catagory = {}) = 0;
+
 
 		/// <summary>
 		/// Creates a sub-block to this block.
@@ -48,6 +48,6 @@ namespace kit::debug
 		/// <summary>
 		/// Execute a functor wrapper in this block.
 		/// </summary>
-		virtual void Exec( std::function< void( IBlock* ) > function ) = 0;			
+		virtual void Exec( std::function< void( IBlock* ) > function, bool timed = false ) = 0;			
 	};
 }
