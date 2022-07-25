@@ -13,11 +13,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="common">
-      <UniqueIdentifier>{5f4071cc-0647-4a6f-8944-d81be51c35fb}</UniqueIdentifier>
-    </Filter>
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="..\common\CustomBlock.h">
       <Filter>common</Filter>
     </ClInclude>
@@ -27,5 +22,10 @@
     <ClInclude Include="..\common\CustomLogListener.h">
       <Filter>common</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="common">
+      <UniqueIdentifier>{4a842062-25db-49b3-bdfd-5419cafe88d9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>
