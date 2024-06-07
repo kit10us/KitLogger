@@ -40,7 +40,7 @@ namespace kit::debug
 		/// <summary>
 		/// Event trigger when a log event happens.
 		/// </summary>
-		virtual void LogEvent( const LogEvent* event ) = 0;
+		virtual bool LogEvent( const LogEvent* event ) = 0;
 
 		/// <summary>
 		/// Returns the path to the log listener.
